@@ -7,42 +7,78 @@
     android:orientation="vertical"
     tools:context="com.example.melhoridade.melhoridade.SelectHobbiesActivity">
 
-  <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:orientation="vertical"
-      android:padding="16dp"
-      android:background="#00BF9A">
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textColor="@android:color/white"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:text="O que você gosta de fazer?"
-        android:layout_marginBottom="8dp"/>
+        android:orientation="vertical"
+        android:paddingBottom="16dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp">
 
-    <TextView
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:gravity="left"
+            android:text="Selecione os seus interesses"
+            android:textColor="@android:color/black"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@android:color/darker_gray" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="Escolha abaixo os 3 tópicos que
+mais lhe interessam e você
+deseja acompanhar diariamente"
+            android:textSize="20sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
-        android:gravity="center"
-        android:text="Toque em até três temas que mais lhe interessam para personalizarmos sua experiência."/>
+        android:orientation="vertical">
+
+        <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/gridview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:columnWidth="300dp"
+            android:gravity="center"
+            android:horizontalSpacing="10dp"
+            android:numColumns="2"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="10dp"
+            android:layout_alignParentTop="true"/>
+
+        <ImageView
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@android:color/darker_gray" />
+
+        <Button
+            android:layout_margin="8dp"
+            android:id="@+id/confirm_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_alignParentBottom="true"
+            android:text="Confirmar" />
 
 
-  </LinearLayout>
+    </LinearLayout>
 
-  <android.support.v7.widget.RecyclerView
-      android:padding="16dp"
-      android:id="@+id/hobbies_recycler_view"
-      android:scrollbars="vertical"
-      android:background="@android:color/transparent"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      >
 
-  </android.support.v7.widget.RecyclerView>
 </LinearLayout>

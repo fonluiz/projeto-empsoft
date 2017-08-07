@@ -1,53 +1,86 @@
 package com.example.melhoridade.melhoridade;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-public class HobbiesAdapter extends RecyclerView.Adapter<HobbiesAdapter.ViewHolder>{
-    private String[] mDataset;
+public class HobbiesAdapter extends BaseAdapter {
+    private Context mContext;
+//    Ordem: Política, culinária, piadas, mundo tv, jogos, saude, esportes, proximidades, turismo, religião
+    private Interest[] mDataset;
+
+    private int[] normalImages = {
+            R.drawable.politica,  R.drawable.culinaria, R.drawable.piadas, R.drawable.mundotv,
+            R.drawable.jogos, R.drawable.saude, R.drawable.esportes, R.drawable.proximidade,
+            R.drawable.turismo, R.drawable.religiao
+    };
+    private int[] selectedImages = {
+            R.drawable.politica_check, R.drawable.culinaria_check, R.drawable.piadas_check,
+            R.drawable.mundotv_check, R.drawable.jogos_check, R.drawable.saude_check,
+            R.drawable.esportes_check, R.drawable.proximidade_check, R.drawable.turismo_check,
+            R.drawable.religiao_check
+    };
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public HobbiesAdapter(String[] myDataset) {
-        mDataset = myDataset;
+    public HobbiesAdapter(Context context) {
+        mContext = context;
+        mDataset = new Interest[10];
+        for (int i = 0; i < 10; i++) {
+            Interest interest = new Interest(normalImages[i], selectedImages[i]);
+            mDataset[i] = interest;
+        }
     }
 
     @Override
-    public HobbiesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        // create a new view
-        View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.hobbie_box, parent, false);
-        // set the view's size, margins, paddings and layout parameters
-
-        ViewHolder vh = new ViewHolder(v);
-        return vh;
-    }
-
-    @Override
-    public void onBindViewHolder(HobbiesAdapter.ViewHolder holder, int position) {
-        holder.interestTextView.setText(mDataset[position]);
-    }
-
-    @Override
-    public int getItemCount() {
+    public int getCount() {
         return mDataset.length;
     }
 
+    @Override
+    public Object getItem(int position) {
+        return mDataset[position];
+    }
 
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        // each data item is just a string in this case
-        public View mCardView;
-        public TextView interestTextView;
+    @Override
+    public long getItemId(int position) {
+        return 0;
+    }
 
-        public ViewHolder(View v) {
-            super(v);
-            mCardView = v;
-            interestTextView = (TextView) mCardView.findViewById(R.id.interest_text_view);
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        ImageView imageView;
+        if (convertView == null) {
+            // if it's not recycled, initialize some attributes
+            imageView = new ImageView(mContext);
+            imageView.setLayoutParams(new GridView.LayoutParams(300, 300));
+            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            imageView.setPadding(8, 8, 8, 8);
+        } else {
+            imageView = (ImageView) convertView;
+        }
+
+        imageView.setImageResource(mDataset[position].getImage());
+        return imageView;
+    }
+
+    public void onClickItem(int position){
+        int count = 0;
+        for (Interest i : mDataset) {
+            if (i.isSelected()) {
+                count++;
+            }
+        }
+        if (count < 3 || mDataset[position].isSelected()) {
+            mDataset[position].changeIcon();
+            notifyDataSetChanged();
         }
     }
+
+
 }
