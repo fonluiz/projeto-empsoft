@@ -1,14 +1,18 @@
 package com.example.melhoridade.melhoridade;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.ButtonBarLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.Button;
 
 public class SelectHobbiesActivity extends AppCompatActivity {
+    private Button next;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +27,15 @@ public class SelectHobbiesActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                    adapter.onClickItem(position);
+            }
+        });
+
+        next = (Button) findViewById(R.id.confirm_btn);
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(SelectHobbiesActivity.this, FeedActivity.class);
+                startActivity(i);
             }
         });
     }
