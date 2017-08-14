@@ -15,6 +15,8 @@ public class PagerAdapter extends FragmentPagerAdapter {
         switch (position) {
             case 0:
                 return FeedFragment.newInstance();
+            case 1:
+                return ChatsListFragment.newInstance();
             default:
                 return FeedFragment.newInstance();
         }

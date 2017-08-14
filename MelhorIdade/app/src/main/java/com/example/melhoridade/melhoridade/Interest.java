@@ -6,11 +6,13 @@ package com.example.melhoridade.melhoridade;
 
 public class Interest {
 
+    private String name;
     private int normalImage;
     private int itemSelectedImage;
     private boolean isSelected = false;
 
-    public Interest(int normalImage, int itemSelectedImage) {
+    public Interest(String name, int normalImage, int itemSelectedImage) {
+        this.name = name;
         this.normalImage = normalImage;
         this.itemSelectedImage = itemSelectedImage;
     }
@@ -33,5 +35,9 @@ public class Interest {
 
     public boolean isSelected() {
         return isSelected;
+    }
+
+    public String getName() {
+        return name;
     }
 }
