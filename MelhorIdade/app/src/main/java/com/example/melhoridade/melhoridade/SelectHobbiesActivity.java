@@ -34,7 +34,7 @@ public class SelectHobbiesActivity extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SelectHobbiesActivity.this, FeedActivity.class);
+                Intent i = new Intent(SelectHobbiesActivity.this, MainActivity.class);
                 startActivity(i);
             }
         });
