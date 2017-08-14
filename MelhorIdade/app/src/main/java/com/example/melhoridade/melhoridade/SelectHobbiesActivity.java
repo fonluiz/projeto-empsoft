@@ -10,9 +10,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Button;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class SelectHobbiesActivity extends AppCompatActivity {
-    private Button next;
+    private TextView next;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +33,7 @@ public class SelectHobbiesActivity extends AppCompatActivity {
             }
         });
 
-        next = (Button) findViewById(R.id.confirm_btn);
+        next = (TextView) findViewById(R.id.confirm_btn);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
