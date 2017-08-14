@@ -48,8 +48,17 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        actionBar.addTab(actionBar.newTab().setText("Notícias").setTabListener(tabListener));
-        actionBar.addTab(actionBar.newTab().setText("Conversas").setTabListener( tabListener));
+        actionBar.addTab(actionBar.newTab().setTabListener(tabListener).setCustomView(R.layout.tab_noticias));
+        actionBar.addTab(actionBar.newTab().setTabListener( tabListener).setCustomView(R.layout.tab_conversas));
+
+        mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+                // When swiping between pages, select the
+                // corresponding tab.
+                getSupportActionBar().setSelectedNavigationItem(position);
+            }
+        });
     }
 
 }
