@@ -79,16 +79,9 @@ public class HobbiesAdapter extends BaseAdapter {
     }
 
     public void onClickItem(int position){
-        int count = 0;
-        for (Interest i : mDataset) {
-            if (i.isSelected()) {
-                count++;
-            }
-        }
-        if (count < 3 || mDataset[position].isSelected()) {
-            mDataset[position].changeIcon();
-            notifyDataSetChanged();
-        }
+        mDataset[position].changeIcon();
+        notifyDataSetChanged();
+
     }
 
     public void saveSelectedInterests() {

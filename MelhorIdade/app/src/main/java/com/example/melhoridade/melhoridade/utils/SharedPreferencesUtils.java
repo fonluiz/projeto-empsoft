@@ -19,8 +19,6 @@ public class SharedPreferencesUtils {
     public static void saveInterests(Context context, String[] interests) {
         Set<String> mySet = new HashSet<String>(Arrays.asList(interests));
 
-        Log.e(TAG, "saveInterests: " + interests[0].toString() );
-
         SharedPreferences sharedPref = context.getSharedPreferences(interestsFile, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putStringSet(interestsKey, mySet);
