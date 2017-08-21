@@ -5,6 +5,18 @@
     android:orientation="vertical"
     tools:context="com.example.melhoridade.melhoridade.ChatsListFragment">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text="Rodas de conversas"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/chats_recycler_view"
         android:scrollbars="vertical"

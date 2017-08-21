@@ -47,7 +47,7 @@ public class ChatsListFragment extends Fragment {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         // specify an adapter (see also next example)
-        mAdapter = new ChatsListAdapter(SharedPreferencesUtils.retrieveInterests(getContext()));
+        mAdapter = new ChatsListAdapter(SharedPreferencesUtils.retrieveInterests(getContext()), getContext());
         mRecyclerView.setAdapter(mAdapter);
 
 
