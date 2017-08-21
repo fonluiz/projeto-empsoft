@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.melhoridade.melhoridade.utils.SharedPreferencesUtils;
+
 import java.util.List;
 
 
@@ -25,6 +27,17 @@ class FeedAdapter extends RecyclerView.Adapter {
     public FeedAdapter(List<Conteudo> conteudos, Context context) {
         this.conteudos = conteudos;
         this.context = context;
+
+        String[] preferences = SharedPreferencesUtils.retrieveInterests(context);
+
+        for (int i = conteudos.size()-1; i >= 0 ; i--){
+            boolean contains = false;
+            for (String s : preferences)
+                if (s.equals(conteudos.get(i).getCategoria()))
+                    contains = true;
+            if (!contains)
+                conteudos.remove(i);
+        }
     }
 
     @Override
