@@ -14,6 +14,7 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.ShareActionProvider;
 
 import com.example.melhoridade.melhoridade.utils.SharedPreferencesUtils;
 
@@ -23,6 +24,7 @@ import java.util.List;
 class FeedAdapter extends RecyclerView.Adapter {
     private List<Conteudo> conteudos;
     private Context context;
+    private ShareActionProvider mShareActionProvider;
 
     public FeedAdapter(List<Conteudo> conteudos, Context context) {
         this.conteudos = conteudos;
@@ -70,12 +72,26 @@ class FeedAdapter extends RecyclerView.Adapter {
         holder.categoria.setText(conteudo.getCategoria());
         holder.foto.setImageResource(conteudo.getImagem());
 
+
         View.OnClickListener click = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(conteudo.getLink())));
             }
         };
+
+        View.OnClickListener shareClick = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "AndroidSolved");
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Esse conteúdo é do BALACOBACO!! " + conteudo.getLink());
+                context.startActivity(Intent.createChooser(sharingIntent, "Mande para os seus amigos"));
+            }
+        };
+
+        holder.share.setOnClickListener(shareClick);
 
         holder.foto.setOnClickListener(click);
         holder.layout.setOnClickListener(click);
@@ -120,6 +136,7 @@ class FeedAdapter extends RecyclerView.Adapter {
         final TextView descricao;
         final TextView categoria;
         final LinearLayout layout;
+        final android.support.design.widget.FloatingActionButton share;
 
 
         public FeedViewHolder(View view) {
@@ -130,6 +147,7 @@ class FeedAdapter extends RecyclerView.Adapter {
             descricao = (TextView) view.findViewById(R.id.descricao);
             categoria = (TextView) view.findViewById(R.id.categoria);
             layout = (LinearLayout) view.findViewById(R.id.bgcategoria);
+            share = (android.support.design.widget.FloatingActionButton) view.findViewById(R.id.share);
         }
 
     }
