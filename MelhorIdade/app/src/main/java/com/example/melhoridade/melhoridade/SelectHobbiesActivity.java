@@ -12,6 +12,8 @@ import android.widget.GridView;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.FirebaseApp;
+
 import org.w3c.dom.Text;
 
 public class SelectHobbiesActivity extends AppCompatActivity {

@@ -1,6 +1,7 @@
 package com.example.melhoridade.melhoridade;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -49,6 +50,19 @@ public class ChatsListFragment extends Fragment {
         // specify an adapter (see also next example)
         mAdapter = new ChatsListAdapter(SharedPreferencesUtils.retrieveInterests(getContext()), getContext());
         mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getContext(), mRecyclerView,
+                new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        Intent i = new Intent(getContext(), ChatActivity.class);
+                        startActivity(i);
+                    }
+
+                    @Override
+                    public void onLongItemClick(View view, int position) {
+
+                    }
+                }));
 
 
         return mainView;

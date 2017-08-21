@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "280668061443",
+    "firebase_url": "https://balacobaco-33225.firebaseio.com",
+    "project_id": "balacobaco-33225",
+    "storage_bucket": "balacobaco-33225.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:280668061443:android:146d328b826a5397",
+        "android_client_info": {
+          "package_name": "com.example.melhoridade.melhoridade"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "280668061443-h1ucgahih79ooegi5sm5ln55uaiiprj8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.melhoridade.melhoridade",
+            "certificate_hash": "ad11ea9375a829c87996a9c189edc739d0c478b6"
+          }
+        },
+        {
+          "client_id": "280668061443-ao5bd2esis1f59rqa64elih1q7u9rscc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTSoA_f7MOsCVnIwmcLJhwXVYVP4CUqak"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "280668061443-ao5bd2esis1f59rqa64elih1q7u9rscc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
